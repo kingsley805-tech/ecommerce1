@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Star, Sparkles, Truck } from 'lucide-react';
+import { ArrowRight, Star, Truck } from 'lucide-react';
 import { useHomepage, useProductList, useCategories } from '@/lib/queries';
 import { ProductCard } from '@/components/product/ProductCard';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -33,7 +33,7 @@ export default function HomePage() {
         <div className="container-shell relative grid min-h-[80vh] items-center gap-12 py-16 lg:grid-cols-2 lg:gap-16 lg:py-24">
           <div className="flex flex-col items-start" data-aos="fade-right">
             <span className="inline-flex items-center gap-2 rounded-full border border-background/20 bg-background/10 px-4 py-1.5 text-xs font-medium backdrop-blur" data-aos="fade-down" data-aos-delay="100">
-              <Sparkles className="h-3.5 w-3.5 text-primary" />
+             
               New season collection is here
             </span>
             <h1 className="mt-6 font-display text-5xl font-semibold leading-[1.05] sm:text-6xl xl:text-7xl" data-aos="fade-up" data-aos-delay="200">

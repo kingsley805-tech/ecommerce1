@@ -1,0 +1,11 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "vite",
+  "buildCommand": "npm ci && npm run build:web",
+  "outputDirectory": "apps/storefront/dist",
+  "rewrites": [
+    { "source": "/admin", "destination": "/admin/index.html" },
+    { "source": "/admin/:path*", "destination": "/admin/index.html" },
+    { "source": "/((?!admin(?:/|$)).*)", "destination": "/index.html" }
+  ]
+}
