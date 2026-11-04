@@ -77,7 +77,7 @@ export const categoryCreateSchema = z.object({
   slug: slugSchema,
   description: z.string().max(1000).optional(),
   parentId: z.string().uuid().nullable().optional(),
-  imageUrl: z.string().url().nullable().optional(),
+  imageUrl: z.preprocess((v) => (v === '' ? null : v), z.string().url().nullable().optional()),
   displayOrder: z.number().int().optional(),
   visibility: z.enum(['VISIBLE', 'HIDDEN']).default('VISIBLE'),
   seoTitle: z.string().max(200).optional(),

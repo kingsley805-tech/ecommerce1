@@ -26,8 +26,9 @@ export default function SuperOwnerLoginPage() {
         return;
       }
       navigate('/super-owner');
-    } catch {
-      setError('Invalid credentials or insufficient permissions');
+    } catch (e) {
+      const isHttp = e instanceof Error && typeof (e as { status?: unknown }).status === 'number';
+      setError(isHttp ? 'Invalid credentials or insufficient permissions' : 'Cannot reach the API server. Make sure the backend is running.');
     } finally {
       setLoading(false);
     }

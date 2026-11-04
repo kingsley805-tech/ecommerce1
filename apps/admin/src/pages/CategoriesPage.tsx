@@ -33,7 +33,7 @@ const schema = z.object({
   slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'Lowercase letters, numbers, hyphens'),
   parentId: z.string().optional().nullable(),
   description: z.string().optional(),
-  imageUrl: z.string().url('Enter a valid URL').optional().nullable(),
+  imageUrl: z.union([z.string().url('Enter a valid URL'), z.literal('')]).optional().nullable(),
   displayOrder: z.coerce.number().int().min(0).optional(),
   visibility: z.enum(['VISIBLE', 'HIDDEN']),
   seoTitle: z.string().optional(),
@@ -154,8 +154,8 @@ export default function CategoriesPage() {
             </div>
             <div><Label>Description</Label><Textarea {...form.register('description')} className="min-h-[80px]" /></div>
             <div className="grid gap-3 sm:grid-cols-2">
-              <div><Label>Image URL</Label><Input {...form.register('imageUrl')} placeholder="https://…" /></div>
-              <div><Label>Display order</Label><Input type="number" {...form.register('displayOrder')} /></div>
+              <div><Label>Image URL (optional)</Label><Input {...form.register('imageUrl')} placeholder="https://…" /></div>
+              <div><Label>Display order (optional)</Label><Input type="number" {...form.register('displayOrder')} /></div>
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
               <div><Label>Visibility</Label>
