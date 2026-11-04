@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "build:web": "npm run build --prefix ../admin && npm run build && node ../../scripts/merge-web.mjs",
+    "build:web": "cd ../.. && npm ci && npm run build --workspace apps/admin && npm run build --workspace apps/storefront && node scripts/merge-web.mjs",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "test": "vitest run"
