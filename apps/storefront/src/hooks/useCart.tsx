@@ -24,8 +24,8 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const refresh = useCallback(async () => {
     try {
-      const data = await apiClient.get<Cart>('/cart');
-      setCart(data);
+      const data = await apiClient.get<Cart | null>('/cart');
+      setCart(data && Array.isArray(data.items) ? data : EMPTY_CART);
     } catch {
       setCart(EMPTY_CART);
     } finally {

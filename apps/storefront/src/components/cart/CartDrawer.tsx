@@ -23,14 +23,14 @@ export function CartDrawer() {
           <div className="flex items-center gap-2">
             <ShoppingBag className="h-5 w-5" />
             <h2 className="text-lg font-semibold">Your cart</h2>
-            <span className="text-sm text-muted-foreground">({cart.itemCount})</span>
+            <span className="text-sm text-muted-foreground">({cart?.itemCount ?? 0})</span>
           </div>
           <Button variant="ghost" size="icon" onClick={() => setOpen(false)} aria-label="Close cart">
             <X className="h-5 w-5" />
           </Button>
         </div>
 
-        {cart.items.length === 0 ? (
+        {(!cart || cart.items.length === 0) ? (
           <div className="flex flex-1 flex-col items-center justify-center gap-3 p-8 text-center">
             <ShoppingBag className="h-12 w-12 text-muted-foreground" />
             <p className="font-medium">Your cart is empty</p>

@@ -167,9 +167,9 @@ export function Header() {
 
           <Button variant="ghost" size="icon" onClick={() => navigate('/cart')} aria-label="Cart" className="relative">
             <ShoppingBag className="h-5 w-5" />
-            {cart.itemCount > 0 && (
+            {cart?.itemCount > 0 && (
               <Badge variant="default" className="absolute -right-1 -top-1 h-5 min-w-5 items-center justify-center rounded-full px-1 text-[11px]">
-                {cart.itemCount}
+                {cart?.itemCount}
               </Badge>
             )}
           </Button>
