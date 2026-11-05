@@ -106,7 +106,7 @@ export function AdminLayout() {
           </div>
           <div className="flex items-center gap-2">
             <span className="hidden text-sm text-muted-foreground sm:block">Modern Commerce — Store management</span>
-            <Button variant="outline" size="sm" onClick={() => window.open('http://localhost:5173', '_blank')}>View storefront</Button>
+            <Button variant="outline" size="sm" onClick={() => window.open('/', '_blank')}>View storefront</Button>
           </div>
         </header>
         <main className="flex-1 p-4 lg:p-6">
