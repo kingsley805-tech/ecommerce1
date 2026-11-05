@@ -10,6 +10,7 @@
   "scripts": {
     "build": "npm run build --workspaces --if-present",
     "build:web": "npm run build --workspace apps/admin && npm run build --workspace apps/storefront && node scripts/merge-web.mjs",
+    "build:web:root": "npm ci && npm run build:web",
     "dev": "npm run dev --workspace apps/api & npm run dev --workspace apps/storefront & npm run dev --workspace apps/admin",
     "lint": "npm run lint --workspaces --if-present",
     "typecheck": "npm run typecheck --workspaces --if-present",
