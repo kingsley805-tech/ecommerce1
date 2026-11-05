@@ -33,7 +33,7 @@ export default function AccountLayout() {
             </NavLink>
           ))}
           <Button variant="ghost" className="w-full justify-start text-muted-foreground" onClick={() => void logout()}>
-            <LogOut className="h-4 w-4" /> Sign out
+            <LogOut className="h-4 w-4" /> <a href="/admin/login">Logout</a>
           </Button>
         </aside>
         <div><Outlet /></div>

@@ -74,7 +74,7 @@ export function AdminLayout() {
           )}
         </div>
         <Button variant="ghost" size="sm" className={cn('mt-1 w-full justify-start', collapsed && 'justify-center px-2')} onClick={() => void logout().then(() => navigate('/admin/login'))}>
-          <LogOut className="h-4 w-4" /> {!collapsed && 'Sign out'}
+          <LogOut className="h-4 w-4" /> <a href="/admin/login">Logout</a>
         </Button>
       </div>
     </div>
