@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { Heart, Menu, Search, ShoppingBag, User, X, ChevronDown, LogOut, Package, MapPin, Settings } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -64,6 +65,7 @@ export function Header() {
     cn('text-sm font-medium transition-colors hover:text-foreground', isActive ? 'text-foreground' : 'text-muted-foreground');
 
   return (
+    <>
     <header className="sticky top-0 z-40 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
       <div className="container-shell flex h-16 items-center justify-between gap-4">
         <div className="flex items-center gap-2">
@@ -177,10 +179,10 @@ export function Header() {
       </div>
 
       {/* Mobile menu */}
-      {mobileOpen && (
-        <div className="fixed inset-0 z-50 lg:hidden">
-          <div className="absolute inset-0 bg-black/40" onClick={() => setMobileOpen(false)} />
-          <div className="absolute inset-y-0 left-0 w-80 max-w-[85vw] overflow-y-auto bg-background p-4 shadow-xl">
+      {mobileOpen && createPortal(
+        <div className="fixed inset-0 z-[100] lg:hidden">
+          <div className="animate-fade-in absolute inset-0 bg-black/40" onClick={() => setMobileOpen(false)} />
+          <div className="animate-slide-in-left absolute inset-0 w-full overflow-y-auto bg-background p-4 shadow-xl">
             <div className="flex items-center justify-between border-b pb-3">
               <span className="font-display text-lg font-semibold">Menu</span>
               <Button variant="ghost" size="icon" onClick={() => setMobileOpen(false)} aria-label="Close menu">
@@ -226,8 +228,10 @@ export function Header() {
               )}
             </div>
           </div>
-        </div>
+        </div>,
+        document.body,
       )}
     </header>
+    </>
   );
 }

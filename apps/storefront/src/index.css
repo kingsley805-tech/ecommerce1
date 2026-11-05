@@ -111,4 +111,28 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+  .animate-slide-in-left {
+    animation: slide-in-left 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .animate-fade-in {
+    animation: fade-in 0.25s ease both;
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

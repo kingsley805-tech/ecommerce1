@@ -30,6 +30,12 @@ export default function HomePage() {
       <section className="relative overflow-hidden bg-foreground text-background">
         <div className="pointer-events-none absolute -top-24 -right-24 h-96 w-96 rounded-full bg-primary/25 blur-3xl" />
         <div className="pointer-events-none absolute -bottom-32 -left-20 h-80 w-80 rounded-full bg-accent/20 blur-3xl" />
+        <img
+          src={HERO_IMAGES.main}
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover opacity-40 lg:hidden"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-foreground/70 via-foreground/50 to-foreground lg:hidden" />
         <div className="container-shell relative grid min-h-[80vh] items-center gap-12 py-16 lg:grid-cols-2 lg:gap-16 lg:py-24">
           <div className="flex flex-col items-start" data-aos="fade-right">
             <span className="inline-flex items-center gap-2 rounded-full border border-background/20 bg-background/10 px-4 py-1.5 text-xs font-medium backdrop-blur" data-aos="fade-down" data-aos-delay="100">
