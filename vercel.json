@@ -1,9 +1,11 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "vite",
-  "buildCommand": "npm ci && npm run build:web",
+  "buildCommand": "npm ci && npx prisma generate && npm run build:web",
   "outputDirectory": "apps/storefront/dist",
   "rewrites": [
+    { "source": "/api/:path*", "destination": "/api" },
+    { "source": "/uploads/:path*", "destination": "/api" },
     { "source": "/admin", "destination": "/admin/index.html" },
     { "source": "/admin/:path*", "destination": "/admin/index.html" },
     { "source": "/((?!admin(?:/|$)).*)", "destination": "/index.html" }
