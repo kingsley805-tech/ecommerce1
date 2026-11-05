@@ -17,12 +17,12 @@ import * as ctrl from './auth.controller';
 
 export const authRouter = Router();
 
-authRouter.post('/register', authLimiter, csrfProtection, validateBody(registerSchema), ctrl.register);
-authRouter.post('/login', authLimiter, csrfProtection, validateBody(loginSchema), ctrl.login);
+authRouter.post('/register', authLimiter, validateBody(registerSchema), ctrl.register);
+authRouter.post('/login', authLimiter, validateBody(loginSchema), ctrl.login);
 authRouter.post('/logout', csrfProtection, ctrl.logout);
 authRouter.post('/refresh', validateBody(refreshSchema), ctrl.refresh);
-authRouter.post('/forgot-password', authLimiter, csrfProtection, validateBody(forgotPasswordSchema), ctrl.forgotPassword);
-authRouter.post('/reset-password', authLimiter, csrfProtection, validateBody(resetPasswordSchema), ctrl.resetPassword);
+authRouter.post('/forgot-password', authLimiter, validateBody(forgotPasswordSchema), ctrl.forgotPassword);
+authRouter.post('/reset-password', authLimiter, validateBody(resetPasswordSchema), ctrl.resetPassword);
 authRouter.post('/verify-email', validateBody(verifyEmailSchema), ctrl.verifyEmail);
 authRouter.post('/resend-verification', authLimiter, validateBody(resendVerificationSchema), ctrl.resendVerification);
 
