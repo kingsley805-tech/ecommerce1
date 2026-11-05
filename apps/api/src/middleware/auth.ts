@@ -50,20 +50,26 @@ export async function optionalAuth(req: Request, _res: Response, next: NextFunct
 /**
  * Requires a valid access token and an active user.
  */
-export async function requireAuth(req: Request, res: Response, next: NextFunction) {
+export async function requireAuth(req: Request, res: Response, next: NextFunction): Promise<void> {
   const token = (req.cookies as Record<string, string | undefined> | undefined)?.[ACCESS_COOKIE];
-  if (!token) return unauthorized(res);
+  if (!token) {
+    unauthorized(res);
+    return;
+  }
   try {
     const payload = verifyAccessToken(token);
     const user = await prisma.user.findUnique({
       where: { id: payload.sub },
       select: { id: true, email: true, status: true },
     });
-    if (!user || user.status !== 'ACTIVE') return unauthorized(res, 'Account is not active');
+    if (!user || user.status !== 'ACTIVE') {
+      unauthorized(res, 'Account is not active');
+      return;
+    }
     req.user = { id: user.id, role: payload.role, email: user.email };
     next();
   } catch {
-    return unauthorized(res, 'Invalid or expired session');
+    unauthorized(res, 'Invalid or expired session');
   }
 }
 
