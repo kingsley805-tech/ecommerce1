@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { AdminLayout } from './components/layout/AdminLayout';
 import { Loader } from './components/ui/loader';
+import { useAuth } from './hooks/useAuth';
 import LoginPage from './pages/LoginPage';
 import SuperOwnerLoginPage from './pages/SuperOwnerLoginPage';
 import SuperOwnerDashboardPage from './pages/SuperOwnerDashboardPage';
@@ -23,10 +24,16 @@ import ContentPage from './pages/ContentPage';
 import SettingsPage from './pages/SettingsPage';
 
 function RequireSuperOwner({ children }: { children: React.ReactNode }) {
+  const { user, loading } = useAuth();
+  if (loading) return <Loader />;
+  if (!user || user.role !== 'SUPER_ADMIN') return <Navigate to="/super-owner/login" replace />;
   return <>{children}</>;
 }
 
 function RequireAdmin({ children }: { children: React.ReactNode }) {
+  const { user, loading } = useAuth();
+  if (loading) return <Loader />;
+  if (!user) return <Navigate to="/login" replace />;
   return <>{children}</>;
 }
 

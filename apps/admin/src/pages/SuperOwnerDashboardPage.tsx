@@ -9,12 +9,14 @@ export default function SuperOwnerDashboardPage() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
+  const signOut = () => void logout().then(() => navigate('/super-owner/login'));
+
   return (
     <div className="mx-auto max-w-3xl">
       <PageHeader
         title="Super-owner panel"
         description="Platform owner access"
-        actions={<Button variant="outline" size="sm" onClick={() => void logout().then(() => navigate('/super-owner/login'))}><LogOut className="h-4 w-4" /> Sign out</Button>}
+        actions={<Button variant="outline" size="sm" onClick={signOut}><LogOut className="h-4 w-4" />Logout</Button>}
       />
 
       <Card className="mb-6">
