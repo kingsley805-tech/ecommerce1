@@ -3,6 +3,7 @@ services:
     name: ecommerce-api
     runtime: docker
     repo: https://github.com/kingsley805-tech/ecommerce1.git
+    branch: main
     plan: starter
     dockerfilePath: ./apps/api/Dockerfile
     healthCheckPath: /healthz
