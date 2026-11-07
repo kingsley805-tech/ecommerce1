@@ -43,4 +43,5 @@ services:
     plan: free
     maxmemoryPolicy: noeviction
     ipAllowList:
-      - 0.0.0.0/0
+      - source: 0.0.0.0/0
+        description: Allow all (dev)
